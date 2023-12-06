@@ -1,0 +1,33 @@
+ALGORITHM determiner_phrase
+VAR
+    i, long_phrase, nb_mots, nb_voy:integer;
+    car: char;
+    phrase: string;
+BEGIN
+    //intialiser la phrase
+ph:="";
+long_phrase=0;
+nb_mots=0;
+nb_voy:0;
+//lire la phrase caractère par caractère
+REPEAT
+    read (car) ;
+    if (car!='.')then 
+    // ajouter la cractère à la phrase
+    phrase:= phrase + car ;
+    // ajouter 1 a la longueur de la phrase
+    long_phrase:=long_phrase+1;
+    end if;
+UNTIL (car='.');
+//parcourir la phrase
+FOR i FROM 1 TO long_phrase STEP 1  DO
+    if ( phrase[i]=" ") then
+    nb_mots:=nb_mots+1;
+    end if;
+    if ( phrase[i]='a' or 'e'or 'o' or 'y' or 'i') then
+    nb_voy:=nb_voy+1;
+    end if;
+END_FOR
+//l'affichage a l'ecran
+write("la phrase est",ph , "la longueur de la phrase est", long_phrase,"le nombre de mots est", nb_mots,"le nombrae de voyelles est",nb_voy)
+END
